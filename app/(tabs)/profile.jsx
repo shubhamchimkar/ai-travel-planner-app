@@ -18,13 +18,13 @@ export default function Profile() {
     const currentUser = auth.currentUser;
     if (currentUser) {
       setUser(currentUser);
-
+      
       // Fetch full name from Firestore
       const fetchUserData = async () => {
         try {
           console.log("Fetching user data for:", currentUser.uid);
           const userDoc = await getDoc(doc(db, "users", currentUser.uid));
-
+          
           if (userDoc.exists()) {
             console.log("User data:", userDoc.data());
             setFullName(userDoc.data().fullName);
@@ -52,19 +52,18 @@ export default function Profile() {
 
   return (
     <View style={styles.container}>
-      {/* Header Section */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={28} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.title}>Profile</Text>
-      </View>
+      <TouchableOpacity style={{
+        position: 'absolute',
+        left: 10,
+        top: 25
+      }} onPress={() => router.back()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
+      <Text style={styles.title}>Profile</Text>
 
       {/* User Info */}
-      <View style={styles.userInfo}>
-        <Text style={styles.infoText}>{fullName ? fullName : 'Guest User'}</Text>
-        <Text style={styles.infoText}>Email: {user?.email}</Text>
-      </View>
+      <Text style={styles.infoText}> {fullName ? fullName : 'Guest User'}</Text>
+      <Text style={styles.infoText}>Email: {user?.email}</Text>
 
       {/* Logout Button */}
       <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
@@ -76,32 +75,17 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 25,
-    paddingTop: 50,
+    paddingTop: 40,
     backgroundColor: Colors.WHITE,
+    height: '100%',
     alignItems: 'center',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    marginBottom: 20,
-  },
-  backButton: {
-    position: 'absolute',
-    left: 0,
-    padding: 10,
   },
   title: {
-    flex: 1,
-    textAlign: 'center',
     fontFamily: 'outfit-bold',
-    fontSize: 28,
-  },
-  userInfo: {
-    alignItems: 'center',
-    marginTop: 20,
+    fontSize: 30,
+    marginTop: 80,
+
   },
   infoText: {
     fontSize: 18,
@@ -122,4 +106,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
