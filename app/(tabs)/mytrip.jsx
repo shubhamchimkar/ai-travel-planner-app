@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useInsertionEffect, useState } from "react";
 import { Colors } from "./../../constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -36,7 +36,7 @@ export default function MyTrip() {
   };
 
   return (
-    <View
+    <ScrollView
       style={{
         padding: 25,
         paddingTop: 55,
@@ -69,6 +69,6 @@ export default function MyTrip() {
        : 
        <UserTripList userTrips={userTrip}/>
        }
-    </View>
+    </ScrollView>
   );
 }

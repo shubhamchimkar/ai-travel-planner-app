@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "ai-travel-planner-app",
-    "slug": "ai-travel-planner-app",
+    "name": "Trip Planner",
+    "slug": "trip-planner",
+    "description": "This is the Ai Trip Planner App which is used to plan the trip using AI",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -36,6 +37,20 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ed2ca085-88d4-456d-b273-d3f6328bed51"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ed2ca085-88d4-456d-b273-d3f6328bed51"
     }
   }
 }
